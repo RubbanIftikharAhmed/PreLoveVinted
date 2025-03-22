@@ -1,13 +1,13 @@
 //
-//  VIntedUITestsLaunchTests.swift
-//  VIntedUITests
+//  VintedUITestsLaunchTests.swift
+//  VintedUITests
 //
-//  Created by Rubban Iftikhar on 16/03/2025.
+//  Created by Rubban Iftikhar on 22/03/2025.
 //
 
 import XCTest
 
-final class VIntedUITestsLaunchTests: XCTestCase {
+final class VintedUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

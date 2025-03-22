@@ -1,13 +1,13 @@
 //
-//  VIntedUITests.swift
-//  VIntedUITests
+//  VintedUITests.swift
+//  VintedUITests
 //
-//  Created by Rubban Iftikhar on 16/03/2025.
+//  Created by Rubban Iftikhar on 22/03/2025.
 //
 
 import XCTest
 
-final class VIntedUITests: XCTestCase {
+final class VintedUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
