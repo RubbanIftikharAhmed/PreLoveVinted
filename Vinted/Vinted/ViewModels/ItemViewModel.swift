@@ -11,7 +11,7 @@ import CoreData
 class itemViewModel : ObservableObject {
     @Published var items : [ItemEntity] = []
     var container : NSPersistentContainer
-    
+    @Published var searchText : String = ""
     
     init(){
         container = NSPersistentContainer(name: "Item")
@@ -22,6 +22,7 @@ class itemViewModel : ObservableObject {
         }
         fetchItems()
     }
+    
     
     func fetchItems() {
         let request = NSFetchRequest<ItemEntity>(entityName: "ItemEntity")

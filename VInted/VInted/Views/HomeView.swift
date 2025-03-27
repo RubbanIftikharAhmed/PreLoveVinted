@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var vm : itemViewModel
-    @State var searchText : String = ""
     var body: some View {
         VStack(spacing: 20){
             Textfield
@@ -26,7 +25,8 @@ struct HomeView: View {
                     
                 } label: {
                     Text("Personalize")
-                        .foregroundStyle(Color(hex : "#006600"))
+                        .foregroundStyle(Color(hex : "##008300"))
+                        .fontWeight(.semibold)
                         .padding(.vertical, 15)
                         .frame(maxWidth: .infinity)
                         .background(Color.white)
@@ -35,8 +35,9 @@ struct HomeView: View {
                     
                 }
             }
-            .padding(.all ,10)
-            .background(Color(hex: "#006600"))
+            .padding(.all ,15)
+            .background(Color(hex: "#008300"))
+            .padding(.horizontal, 08)
             Spacer()
         }
     }
@@ -50,7 +51,7 @@ struct HomeView: View {
 
 extension HomeView {
     var Textfield : some View{
-        TextField("Search for clothing articles", text: $searchText)
+        TextField("Search for clothing articles", text: $vm.searchText)
             .padding(.vertical, 20)
             .padding(.leading, 15)
             .frame(maxWidth: .infinity)
