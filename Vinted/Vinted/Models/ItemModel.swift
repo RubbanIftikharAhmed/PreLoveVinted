@@ -14,6 +14,21 @@ enum conditionEnum {
     case new
 }
 
+enum MenCategoryEnum {
+    case clothing
+    case footwear
+    case accessories
+}
+
+enum categoriesEnum {
+    case men(MenCategoryEnum)
+    case women
+    case unisex
+    case kids
+    
+}
+
+
 protocol itemModelProtocol {
     var name : String {get}
     var price : Double {get}
@@ -21,6 +36,7 @@ protocol itemModelProtocol {
     var favourites : Int {get}
     var views : Int {get}
 }
+
 
 
 struct ItemModel : itemModelProtocol, Identifiable{
@@ -31,4 +47,5 @@ struct ItemModel : itemModelProtocol, Identifiable{
     var price: Double
     var favourites: Int
     var views : Int
+    var category : categoriesEnum
 }
