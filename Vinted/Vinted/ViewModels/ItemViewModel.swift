@@ -36,6 +36,7 @@ class itemViewModel : ObservableObject {
         let newItem : ItemEntity = ItemEntity(context: container.viewContext)
         newItem.name = name
         newItem.price = price
+        newItem.favourite = 0
         if let description = description {
             newItem.itemDescription = description
         } else {
@@ -50,6 +51,25 @@ class itemViewModel : ObservableObject {
             fetchItems()
         } catch let error {
             print("Error saving \(error)")
+        }
+    }
+    
+    func addFavourite(item : ItemEntity) {
+        item.favouriteCount += 1
+        saveItems()
+    }
+    
+    // i need to figure out how to add the views function
+    
+}
+
+extension ItemEntity {
+    var favouriteCount: Int {
+        get {
+            return favourite?.intValue ?? 0 // Convert NSDecimalNumber to Int safely
+        }
+        set {
+            favourite = NSDecimalNumber(value: newValue) // Convert Int to NSDecimalNumber
         }
     }
 }

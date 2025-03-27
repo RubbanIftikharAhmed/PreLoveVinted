@@ -19,6 +19,7 @@ protocol itemModelProtocol {
     var price : Double {get}
     var condition : conditionEnum {get}
     var favourites : Int {get}
+    var views : Int {get}
 }
 
 
@@ -29,4 +30,5 @@ struct ItemModel : itemModelProtocol, Identifiable{
     var condition: conditionEnum
     var price: Double
     var favourites: Int
+    var views : Int
 }
