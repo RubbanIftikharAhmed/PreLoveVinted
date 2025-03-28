@@ -9,36 +9,45 @@ import SwiftUI
 
 struct FeedView: View {
     @EnvironmentObject private var vm : itemViewModel
+    
     var body: some View {
         VStack(spacing: 20){
             Textfield
-
-            VStack(alignment: .leading) {
-                Text("Personalize your Feed")
-                    .foregroundStyle(Color.white)
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                Text("Follow the brands you love to find items that match your style.")
-                    .foregroundStyle(Color.white)
-                
-                Button {
-                    
-                } label: {
-                    Text("Personalize")
-                        .foregroundStyle(Color(hex : "##008300"))
+            ScrollView{
+                VStack(alignment: .leading) {
+                    Text("Personalize your Feed")
+                        .foregroundStyle(Color.white)
+                        .font(.title3)
                         .fontWeight(.semibold)
-                        .padding(.vertical, 15)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 02))
-                        .padding(.horizontal, 0)
+                    Text("Follow the brands you love to find items that match your style.")
+                        .foregroundStyle(Color.white)
                     
+                    Button {
+                        
+                    } label: {
+                        Text("Personalize")
+                            .foregroundStyle(Color(hex : "##008300"))
+                            .fontWeight(.semibold)
+                            .padding(.vertical, 15)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 02))
+                            .padding(.horizontal, 0)
+                        
+                    }
                 }
+                .padding(.all ,15)
+                .background(Color(hex: "#008300"))
+                .padding(.horizontal, 08)
+                
+                
+                FeedCell
+                
             }
-            .padding(.all ,15)
-            .background(Color(hex: "#008300"))
-            .padding(.horizontal, 08)
-            // scroll view should come here
+            .refreshable {
+                
+            }
+            
             
             
             
