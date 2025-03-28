@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum conditionEnum {
+enum conditionEnum : String{
     case satisfactory
     case good
     case excellent

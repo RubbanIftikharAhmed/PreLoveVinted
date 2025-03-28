@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct FeedView: View {
     @EnvironmentObject private var vm : itemViewModel
     var body: some View {
         VStack(spacing: 20){
@@ -38,18 +38,23 @@ struct HomeView: View {
             .padding(.all ,15)
             .background(Color(hex: "#008300"))
             .padding(.horizontal, 08)
+            // scroll view should come here
+            
+            
+            
+            
             Spacer()
         }
     }
 }
 
 #Preview {
-    HomeView()
+    FeedView()
         .environmentObject(itemViewModel())
 }
 
 
-extension HomeView {
+extension FeedView {
     var Textfield : some View{
         TextField("Search for clothing articles", text: $vm.searchText)
             .padding(.vertical, 20)
