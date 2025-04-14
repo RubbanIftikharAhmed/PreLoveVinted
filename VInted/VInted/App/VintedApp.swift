@@ -23,7 +23,7 @@ struct VintedApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            ContentView()
         }
     }
 }

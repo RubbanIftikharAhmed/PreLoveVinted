@@ -41,7 +41,7 @@ struct FeedView: View {
                 .padding(.horizontal, 08)
                 
                 
-                FeedCell
+                //FeedCellView
                 
             }
             .refreshable {

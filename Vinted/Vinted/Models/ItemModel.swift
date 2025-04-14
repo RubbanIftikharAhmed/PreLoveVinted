@@ -7,20 +7,20 @@
 
 import Foundation
 
-enum conditionEnum : String{
+enum conditionEnum : String, Codable{
     case satisfactory
     case good
     case excellent
     case new
 }
 
-enum MenCategoryEnum {
+enum MenCategoryEnum: Codable {
     case clothing
     case footwear
     case accessories
 }
 
-enum categoriesEnum {
+enum categoriesEnum: Codable {
     case men(MenCategoryEnum)
     case women
     case unisex
@@ -29,7 +29,7 @@ enum categoriesEnum {
 }
 
 
-protocol itemModelProtocol {
+protocol itemModelProtocol:Codable {
     var name : String {get}
     var price : Double {get}
     var condition : conditionEnum {get}
@@ -39,7 +39,7 @@ protocol itemModelProtocol {
 
 
 
-struct ItemModel : itemModelProtocol, Identifiable{
+struct ItemModel : itemModelProtocol, Identifiable, Codable{
     typealias ConditionType = conditionEnum
     var id : UUID = UUID()
     var name : String
