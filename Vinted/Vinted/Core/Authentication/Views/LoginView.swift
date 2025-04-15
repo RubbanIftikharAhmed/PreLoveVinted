@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @StateObject var vm = LoginViewModel()
     var body: some View {
         //since we wanna go back and forth between or login and sign up page. We need to use a navigation stack
         NavigationStack{
@@ -42,16 +41,18 @@ extension LoginView{
     
     private var InputFields: some View{
         VStack{
-            TextField("Enter your email", text: $email)
+            TextField("Enter your email", text: $vm.email)
                 .modifier(RegistrationTextFieldModifier())
-            SecureField("Enter your password", text: $password)
+            SecureField("Enter your password", text: $vm.password)
                 .modifier(RegistrationTextFieldModifier())
         }
     }
     
     private var loginButton: some View{
         Button {
-            
+            Task{
+                try await vm.loginUser()
+            }
         } label: {
             Text("Login")
                 .font(.subheadline)

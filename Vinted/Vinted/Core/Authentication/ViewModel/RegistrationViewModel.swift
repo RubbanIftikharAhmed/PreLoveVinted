@@ -13,7 +13,10 @@ class RegistrationViewModel : ObservableObject{
     @Published var fullname: String = ""
     @Published var username: String = ""
     
-    
+    @MainActor
+    func login() async throws {
+        
+    }
     @MainActor
     func createUser() async throws {
         do{

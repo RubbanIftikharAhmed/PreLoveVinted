@@ -39,35 +39,9 @@
 		BCAB06C62D8F1DC300B4AA36 /* VintedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VintedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BC839ED22DACFE4E00C44781 /* Exceptions for "Vinted" folder in "Vinted" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				CoreDataFiles/Item.xcdatamodeld,
-				CoreDataFiles/User.xcdatamodeld,
-			);
-			target = BCAB06AB2D8F1DC100B4AA36 /* Vinted */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		BC839ED32DACFE4E00C44781 /* Exceptions for "Vinted" folder in "Compile Sources" phase from "Vinted" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = BCAB06A82D8F1DC100B4AA36 /* Sources */;
-			membershipExceptions = (
-				CoreDataFiles/Item.xcdatamodeld,
-				CoreDataFiles/User.xcdatamodeld,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BC839EC32DACFE4E00C44781 /* Vinted */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				BC839ED22DACFE4E00C44781 /* Exceptions for "Vinted" folder in "Vinted" target */,
-				BC839ED32DACFE4E00C44781 /* Exceptions for "Vinted" folder in "Compile Sources" phase from "Vinted" target */,
-			);
 			path = Vinted;
 			sourceTree = "<group>";
 		};
