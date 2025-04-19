@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData
 
 class itemViewModel : ObservableObject {
     
@@ -15,21 +14,55 @@ class itemViewModel : ObservableObject {
     init(){
     }
     
-    
-
-    
-}
-
-extension ItemEntity {
-    var favouriteCount: Int {
-        get {
-            return favourite?.intValue ?? 0 // Convert NSDecimalNumber to Int safely
+    func fetchItems() async {
+        guard let url = URL(string: "http://localhost:2466/items") else {
+            return
         }
-        set {
-            favourite = NSDecimalNumber(value: newValue) // Convert Int to NSDecimalNumber
+        do{
+            let (data, response) = try await URLSession.shared.data(from: url)
+            let decodedItems = try JSONDecoder().decode([ItemModel].self, from: data)
+            await MainActor.run {
+                items = decodedItems
+            }
+        } catch let error {
+            print("DEGUB: Failed to fetch items: \(error)")
         }
     }
+    
+    func addItem(item: ItemModel) async {
+        guard let url = URL(string: "http://localhost:2466/items") else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let encodedItem = try JSONEncoder().encode(item)
+            request.httpBody = encodedItem
+            
+            let (_, response) = try await URLSession.shared.data(for: request)
+            if let httpResponse = response as? HTTPURLResponse {
+                print("PUT response status: \(httpResponse.statusCode)")
+            }
+        } catch {
+            print("Failed to add item: \(error)")
+        }
+    }
+
+    
 }
+
+//extension ItemEntity {
+//    var favouriteCount: Int {
+//        get {
+//            return favourite?.intValue ?? 0 // Convert NSDecimalNumber to Int safely
+//        }
+//        set {
+//            favourite = NSDecimalNumber(value: newValue) // Convert Int to NSDecimalNumber
+//        }
+//    }
+//}
 
 /*
  should store item in core data as
