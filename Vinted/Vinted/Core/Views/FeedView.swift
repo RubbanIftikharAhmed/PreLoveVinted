@@ -6,42 +6,43 @@
 //
 
 import SwiftUI
-
 struct FeedView: View {
-    @EnvironmentObject private var vm : itemViewModel
-    
+    @EnvironmentObject var vm : ItemViewModel
     var body: some View {
-        NavigationStack{
-            VStack(spacing: 20){
+        NavigationStack {
+            VStack(spacing: 20) {
                 Textfield
-                ScrollView{
+                ScrollView {
                     VStack(alignment: .leading) {
                         PersonalizeYourFeed
-                        padding(.vertical, 20)
+                            .padding(.vertical, 20)
                         
-                        HStack{
+                        HStack {
                             Text("Popular items")
                                 .fontWeight(.semibold)
                             Spacer()
                             
                             NavigationLink {
-                                
+                                Text("View all items")
                             } label: {
                                 Text("View all")
                             }
-
                         }
                     }
-                    .padding(.all ,15)
-                    .background(Color(hex: "#008300"))
-                    .padding(.horizontal, 08)
+                    .padding(.all, 15)
+                    .background(Color.green)
+                    .padding(.horizontal, 8)
                     
-                    
-                    //FeedCellView
-                    
+
                 }
                 .refreshable {
-                    
+                    Task {
+                        await vm.fetchItems()
+                    }
+                }
+                .task {
+                    // Load items when view appears
+                    await vm.fetchItems()
                 }
                 Spacer()
             }
@@ -51,7 +52,7 @@ struct FeedView: View {
 
 #Preview {
     FeedView()
-        .environmentObject(itemViewModel())
+        .environmentObject(ItemViewModel())
 }
 
 
@@ -63,7 +64,7 @@ extension FeedView {
             .frame(maxWidth: .infinity)
             .background(Color.gray.opacity(0.08))
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(.horizontal, 08)
+            .padding(.horizontal, 8)
     }
     
     
@@ -81,12 +82,12 @@ extension FeedView {
                 
             } label: {
                 Text("Personalize")
-                    .foregroundStyle(Color(hex : "##008300"))
+                    .foregroundStyle(Color.green)
                     .fontWeight(.semibold)
                     .padding(.vertical, 15)
                     .frame(maxWidth: .infinity)
                     .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 02))
+                    .clipShape(RoundedRectangle(cornerRadius: 2))
                     .padding(.horizontal, 0)
                 
             }
@@ -95,20 +96,20 @@ extension FeedView {
 }
 
 
-extension Color {
-    init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        
-        let r, g, b: Double
-        if hex.count == 6 { // RGB Format (without Alpha)
-            r = Double((int >> 16) & 0xFF) / 255.0
-            g = Double((int >> 8) & 0xFF) / 255.0
-            b = Double(int & 0xFF) / 255.0
-            self.init(red: r, green: g, blue: b)
-        } else {
-            self.init(.black) // Default to black if invalid hex
-        }
-    }
-}
+//extension Color {
+//    init(hex: String) {
+//        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+//        var int: UInt64 = 0
+//        Scanner(string: hex).scanHexInt64(&int)
+//        
+//        let r, g, b: Double
+//        if hex.count == 6 { // RGB Format (without Alpha)
+//            r = Double((int >> 16) & 0xFF) / 255.0
+//            g = Double((int >> 8) & 0xFF) / 255.0
+//            b = Double(int & 0xFF) / 255.0
+//            self.init(red: r, green: g, blue: b)
+//        } else {
+//            self.init(.black) // Default to black if invalid hex
+//        }
+//    }
+//}

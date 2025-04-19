@@ -60,6 +60,9 @@
                <FileRef
                   location = "group:FeedView.swift">
                </FileRef>
+               <FileRef
+                  location = "group:UploadItemView.swift">
+               </FileRef>
             </Group>
             <Group
                location = "group:Authentication"

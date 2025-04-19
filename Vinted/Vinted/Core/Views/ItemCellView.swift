@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FeedCellView: View {
-    @EnvironmentObject var vm : itemViewModel
+    @EnvironmentObject var vm : ItemViewModel
     let item: ItemModel
 
     var body: some View {
@@ -58,5 +58,5 @@ struct FeedCellView: View {
 
 #Preview {
     FeedCellView(item:  ItemModel(name: "Carhartt", condition: .good, price: 2300, favourites: 0, views: 0, category: .men(.clothing)))
-        .environmentObject(itemViewModel())
+        .environmentObject(ItemViewModel())
 }

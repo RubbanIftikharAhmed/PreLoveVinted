@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @EnvironmentObject var itemVM : ItemViewModel
     var body: some View {
         TabView{
-            Text("Home")
+            FeedView()
                 .tabItem {
                     VStack{
                         Image(systemName: "house")
@@ -55,4 +56,5 @@ struct TabBarView: View {
 
 #Preview {
     TabBarView()
+        .environmentObject(ItemViewModel())
 }

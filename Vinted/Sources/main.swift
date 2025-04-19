@@ -6,7 +6,7 @@ import Swifter
 
 
 let server = HttpServer()
-let items : [itemModel] = [
+var items : [itemModel] = [
     ItemModel(name: "T-Shirt", condition: .good, price: 15.99, favourites: 10, views: 120, category: .men(.clothing)),
     ItemModel(name: "Sneakers", condition: .excellent, price: 60.0, favourites: 25, views: 300, category: .men(.footwear))
 ]
@@ -23,7 +23,7 @@ server["/items"] = { request in
     }
 }
 
-server["/items"] = .put { request in
+server.PUT["/items"] = { request in
     guard let body = request.body else {
         return .badRequest(nil)
     }

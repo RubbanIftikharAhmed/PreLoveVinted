@@ -7,7 +7,7 @@
 
 import Foundation
 
-class itemViewModel : ObservableObject {
+class ItemViewModel : ObservableObject {
     
     @Published var searchText : String = ""
     @Published var items : [ItemModel] = []
@@ -19,7 +19,7 @@ class itemViewModel : ObservableObject {
             return
         }
         do{
-            let (data, response) = try await URLSession.shared.data(from: url)
+            let (data, _) = try await URLSession.shared.data(from: url)
             let decodedItems = try JSONDecoder().decode([ItemModel].self, from: data)
             await MainActor.run {
                 items = decodedItems
