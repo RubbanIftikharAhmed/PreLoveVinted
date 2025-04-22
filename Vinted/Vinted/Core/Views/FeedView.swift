@@ -16,7 +16,12 @@ struct FeedView: View {
                     VStack(alignment: .leading) {
                         PersonalizeYourFeed
                             .padding(.vertical, 20)
-                        
+                    }
+                    .padding(.all, 15)
+                    .background(Color.green)
+                    .padding(.horizontal, 8)
+                    
+                    VStack{
                         HStack {
                             Text("Popular items")
                                 .fontWeight(.semibold)
@@ -28,11 +33,16 @@ struct FeedView: View {
                                 Text("View all")
                             }
                         }
+                        .padding(.horizontal, 8)
+                        
+                        ScrollView {
+                            HStack{
+                                ForEach(vm.items) { item in
+                                    FeedCellView(item: item)
+                                }
+                            }
+                        }
                     }
-                    .padding(.all, 15)
-                    .background(Color.green)
-                    .padding(.horizontal, 8)
-                    
 
                 }
                 .refreshable {
@@ -70,7 +80,7 @@ extension FeedView {
     
     
     var PersonalizeYourFeed : some View {
-        VStack{
+        VStack(alignment: .leading){
             Text("Personalize your Feed")
                 .foregroundStyle(Color.white)
                 .font(.title3)

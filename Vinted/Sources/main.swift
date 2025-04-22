@@ -3,10 +3,11 @@
 
 import Foundation
 import Swifter
+import Models
 
 
 let server = HttpServer()
-var items : [itemModel] = [
+var items : [ItemModel] = [
     ItemModel(name: "T-Shirt", condition: .good, price: 15.99, favourites: 10, views: 120, category: .men(.clothing)),
     ItemModel(name: "Sneakers", condition: .excellent, price: 60.0, favourites: 25, views: 300, category: .men(.footwear))
 ]
@@ -14,7 +15,7 @@ var items : [itemModel] = [
 let encoder = JSONEncoder()
 encoder.outputFormatting = .prettyPrinted
 
-server["/items"] = { request in
+server["/getItems"] = { request in
     do {
         let jsonData = try encoder.encode(items)
         return HttpResponse.ok(.data(jsonData, contentType: "application/json"))
@@ -23,7 +24,7 @@ server["/items"] = { request in
     }
 }
 
-server.PUT["/items"] = { request in
+server["/putItems"] = { request in
     guard let body = request.body else {
         return .badRequest(nil)
     }

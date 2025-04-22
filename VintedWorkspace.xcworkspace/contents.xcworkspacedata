@@ -21,16 +21,6 @@
                </FileRef>
             </Group>
             <Group
-               location = "group:Models"
-               name = "Models">
-               <FileRef
-                  location = "group:ItemModel.swift">
-               </FileRef>
-               <FileRef
-                  location = "group:UserModel.swift">
-               </FileRef>
-            </Group>
-            <Group
                location = "group:Root"
                name = "Root">
                <Group
@@ -55,7 +45,7 @@
                   location = "group:TabBarView.swift">
                </FileRef>
                <FileRef
-                  location = "group:ItemCellView.swift">
+                  location = "group:FeedCellView.swift">
                </FileRef>
                <FileRef
                   location = "group:FeedView.swift">
@@ -94,6 +84,16 @@
                      location = "group:AuthService.swift">
                   </FileRef>
                </Group>
+            </Group>
+            <Group
+               location = "group:Models"
+               name = "Models">
+               <FileRef
+                  location = "group:ItemModel.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UserModel.swift">
+               </FileRef>
             </Group>
          </Group>
          <Group
