@@ -12,14 +12,45 @@ class ItemViewModel : ObservableObject {
     @Published var searchText : String = ""
     @Published var items : [ItemModel] = []
     init(){
+        fetchItems()
     }
     func fetchItems(){
+        DispatchQueue.global(qos: .background).async{
+            let fetchedItems = DatabaseManager.shared.fetchAllItems()
+            DispatchQueue.main.async {
+                self.items = fetchedItems
+            }
+        }
         
     }
     
-
-    
+    func addItem(name: String, isSold: Bool, condition: conditionEnum, price: Double, category: categoriesEnum, images: [String]) {
+        let newItem = ItemModel(name: name, isSold: isSold, condition: condition, price: price, category: category, images: images)
+        
+        DispatchQueue.global(qos: .background).async {
+            DatabaseManager.shared.addItem(item: newItem)
+            self.fetchItems()
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //extension ItemEntity {
 //    var favouriteCount: Int {
