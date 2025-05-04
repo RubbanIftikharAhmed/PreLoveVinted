@@ -10,6 +10,7 @@
 		BCB951AC2DC6083800ED8498 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BCB951AB2DC6083800ED8498 /* FirebaseAuth */; };
 		BCB951AE2DC6083800ED8498 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = BCB951AD2DC6083800ED8498 /* FirebaseDatabase */; };
 		BCB951B02DC6083800ED8498 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BCB951AF2DC6083800ED8498 /* FirebaseStorage */; };
+		BCB952312DC60BCC00ED8498 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = BCB952302DC60BCC00ED8498 /* SQLite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCB952312DC60BCC00ED8498 /* SQLite in Frameworks */,
 				BCB951AE2DC6083800ED8498 /* FirebaseDatabase in Frameworks */,
 				BCB951AC2DC6083800ED8498 /* FirebaseAuth in Frameworks */,
 				BCB951B02DC6083800ED8498 /* FirebaseStorage in Frameworks */,
@@ -124,6 +126,7 @@
 				BCB951AB2DC6083800ED8498 /* FirebaseAuth */,
 				BCB951AD2DC6083800ED8498 /* FirebaseDatabase */,
 				BCB951AF2DC6083800ED8498 /* FirebaseStorage */,
+				BCB952302DC60BCC00ED8498 /* SQLite */,
 			);
 			productName = Vinted;
 			productReference = BCB951492DC5F45A00ED8498 /* Vinted.app */;
@@ -209,6 +212,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				BCB951AA2DC6083800ED8498 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				BCB9522F2DC60BCC00ED8498 /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BCB9514A2DC5F45A00ED8498 /* Products */;
@@ -583,6 +587,14 @@
 				minimumVersion = 11.12.0;
 			};
 		};
+		BCB9522F2DC60BCC00ED8498 /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -600,6 +612,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BCB951AA2DC6083800ED8498 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		BCB952302DC60BCC00ED8498 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BCB9522F2DC60BCC00ED8498 /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

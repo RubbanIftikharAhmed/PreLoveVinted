@@ -57,6 +57,6 @@ struct FeedCellView: View {
 }
 
 #Preview {
-    FeedCellView(item:  ItemModel(name: "Carhartt", condition: .good, price: 2300, favourites: 0, views: 0, category: .men(.clothing)))
+    FeedCellView(item:  ItemModel(name: "Carhartt", isSold: false, condition: .good, price: 2300, favourites: 0, views: 0, category: .men, images: []))
         .environmentObject(ItemViewModel())
 }
