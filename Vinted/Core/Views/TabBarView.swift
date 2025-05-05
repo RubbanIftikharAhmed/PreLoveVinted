@@ -9,47 +9,63 @@ import SwiftUI
 
 struct TabBarView: View {
     @EnvironmentObject var itemVM : ItemViewModel
+    @State private var selectedTab = 0
+    @State private var previousTab = 0
+    @State private var showUploadItemSheet : Bool = false
+    
     var body: some View {
-        TabView{
+        TabView(selection: $selectedTab){
             FeedView()
+                .tag(0)
                 .tabItem {
-                    VStack{
-                        Image(systemName: "house")
-                        Text("Home")
-                    }
+                    Label("Home", systemImage: "house")
                 }
             
             Text("Search")
+                .tag(1)
                 .tabItem {
-                    VStack{
-                        Image(systemName: "magnifyingglass")
-                        Text("Search")
-                    }
+                    Label("Search", systemImage: "magnifyingglass")
                 }
             
-            Text("Upload")
+            Color.clear
+                .tag(2)
                 .tabItem {
-                    VStack{
-                        Image(systemName: "plus.circle")
-                        Text("Upload")
-                    }
+                    Label("Upload", systemImage: "plus.circle")
                 }
             
             Text("Messages")
+                .tag(3)
                 .tabItem {
-                    VStack{
-                        Image(systemName: "envelope")
-                        Text("Messages")
-                    }
+                    Label("Messages", systemImage: "envelope")
                 }
             
             Text("Profile")
+                .tag(4)
                 .tabItem {
-                    VStack{
-                        Image(systemName: "person")
-                        Text("Profile")
-                    }
+                    Label("Profile", systemImage: "person")
                 }
+        }
+        .onChange(of: selectedTab) { oldValue, newValue in
+            if newValue == 2{
+                previousTab = oldValue
+                //previousTab = selectedTab == 2 ? 0 : selectedTab
+                showUploadItemSheet = true
+                selectedTab = previousTab
+            }
+        }
+        .fullScreenCover(isPresented: $showUploadItemSheet) {
+            NavigationStack{
+                UploadItemView()
+                    .toolbar{
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button {
+                                showUploadItemSheet = false
+                            } label: {
+                                Text("Cancel")
+                            }
+                        }
+                    }
+            }
         }
     }
 }

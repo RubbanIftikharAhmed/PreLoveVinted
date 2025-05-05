@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FeedCellView: View {
+struct ItemCellView: View {
     @EnvironmentObject var vm : ItemViewModel
     let item: ItemModel
 
@@ -57,6 +57,6 @@ struct FeedCellView: View {
 }
 
 #Preview {
-    FeedCellView(item:  ItemModel(name: "Carhartt", isSold: false, condition: .good, price: 2300, favourites: 0, views: 0, category: .men, images: []))
+    ItemCellView(item:  ItemModel(name: "Carhartt", isSold: false, condition: .good, price: 2300, favourites: 0, views: 0, category: .men, images: []))
         .environmentObject(ItemViewModel())
 }

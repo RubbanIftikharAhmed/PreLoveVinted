@@ -38,7 +38,7 @@ struct FeedView: View {
                         ScrollView {
                             HStack{
                                 ForEach(vm.items) { item in
-                                    FeedCellView(item: item)
+                                    ItemCellView(item: item)
                                 }
                             }
                         }

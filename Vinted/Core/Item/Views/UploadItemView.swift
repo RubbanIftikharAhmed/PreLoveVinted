@@ -7,11 +7,16 @@
 
 import SwiftUI
 
+//yet to implement sizing techniques here
 struct UploadItemView: View {
     @EnvironmentObject var vm : ItemViewModel
     var body: some View {
-        VStack{
-            
+        NavigationStack{
+            VStack{
+                
+            }
+            .navigationTitle("Sell an item")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
