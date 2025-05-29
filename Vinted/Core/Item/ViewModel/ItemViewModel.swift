@@ -6,25 +6,27 @@
 //
 
 import Foundation
+import UIKit
 
-class ItemViewModel : ObservableObject {
+class ItemViewModel: ObservableObject {
+    @Published var searchText: String = ""
+    @Published var items: [ItemModel] = []
     
-    @Published var searchText : String = ""
-    @Published var items : [ItemModel] = []
-    init(){
+    init() {
         fetchItems()
     }
-    func fetchItems(){
-        DispatchQueue.global(qos: .background).async{
+    
+    func fetchItems() {
+        DispatchQueue.global(qos: .background).async {
             let fetchedItems = DatabaseManager.shared.fetchAllItems()
             DispatchQueue.main.async {
                 self.items = fetchedItems
             }
         }
-        
     }
     
     func addItem(name: String, isSold: Bool, condition: conditionEnum, price: Double, category: categoriesEnum, images: [String]) {
+        // Use the stored imageStrings
         let newItem = ItemModel(name: name, isSold: isSold, condition: condition, price: price, category: category, images: images)
         
         DispatchQueue.global(qos: .background).async {
@@ -33,12 +35,6 @@ class ItemViewModel : ObservableObject {
         }
     }
 }
-
-
-
-
-
-
 
 
 
