@@ -57,6 +57,6 @@ struct ItemCellView: View {
 }
 
 #Preview {
-    ItemCellView(item:  ItemModel(name: "Carhartt", isSold: false, condition: .good, price: 2300, favourites: 0, views: 0, category: .men, images: []))
+    ItemCellView(item:  ItemModel(name: "Carhartt", isSold: false, condition: .good, price: 2300, brand: "Carhartt", favourites: 0, views: 0, category: .men, images: []))
         .environmentObject(ItemViewModel())
 }

@@ -18,9 +18,11 @@ class DatabaseManager{
     private let isSold = Expression<Bool>("isSold")
     private let condition = Expression<String>("condition") //you cannot use conditionEnum as a type
     private let price = Expression<Double>("price")
+    private let brand = Expression<String>("brand")
     private let favourites = Expression<Int>("favourites")
     private let views = Expression<Int>("views")
     private let category = Expression<String>("category")
+    //private let subCategory = Expression<String>("subCategory")
     private let images = Expression<String>("images")
     
     private init(){
@@ -47,9 +49,11 @@ class DatabaseManager{
                 items.column(isSold)
                 items.column(condition)
                 items.column(price)
+                items.column(brand)
                 items.column(favourites)
                 items.column(views)
                 items.column(category)
+                //items.column(subCategory)
                 items.column(images)
             })
         } catch let error {
@@ -65,7 +69,9 @@ class DatabaseManager{
                 isSold <- item.isSold,
                 condition <- item.condition.rawValue,
                 price <- item.price,
+                brand <- item.brand,
                 category <- encodeCategory(item.category),
+                //subCategory <- encodeCategory(item.subCategory)
                 images <- encodeImages(item.images)
             )
             try db.run(insert)
@@ -93,9 +99,11 @@ class DatabaseManager{
                     isSold: row[isSold],
                     condition: condition,
                     price: row[price],
+                    brand: row[brand],
                     favourites: row[favourites],
                     views: row[views],
                     category: category,
+                    //subCategory: subCategory,
                     images: images
                     )
                 items.append(newItem)
@@ -136,9 +144,16 @@ private func encodeCategory(_ category: categoriesEnum) -> String {
     case .men: return "men"
     case .women: return "women"
     case .unisex: return "unisex"
-    case .kids: return "kids"
+    case .children: return "children"
     }
 }
+
+//private func encodeSubCategory(_ subCategory: subCategoryEnum) -> String {
+//    switch subCategory {
+//        
+//    }
+//}
+
 
 private func decodeCategory(_ string: String) -> categoriesEnum? {
     if string.starts(with: "men.") {
@@ -147,8 +162,8 @@ private func decodeCategory(_ string: String) -> categoriesEnum? {
         return .women
     } else if string == "unisex" {
         return .unisex
-    } else if string == "kids" {
-        return .kids
+    } else if string == "children" {
+        return .children
     }
     return nil
 }

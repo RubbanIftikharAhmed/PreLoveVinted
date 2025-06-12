@@ -14,18 +14,12 @@ enum conditionEnum : String, Codable{
     case new
 }
 
-//enum MenCategoryEnum: Codable, CaseIterable {
-//    case clothing
-//    case footwear
-//    case accessories
-//}
 
-enum categoriesEnum: Codable {
+enum categoriesEnum: Codable, CaseIterable {
     case men
     case women
     case unisex
-    case kids
-    
+    case children
 }
 
 
@@ -47,6 +41,7 @@ struct ItemModel : itemModelProtocol, Identifiable, Codable{
     var isSold : Bool
     var condition: conditionEnum
     var price: Double
+    var brand: String
     var favourites: Int = 0
     var views : Int = 0
     var category : categoriesEnum

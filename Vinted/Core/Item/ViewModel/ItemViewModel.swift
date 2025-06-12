@@ -25,9 +25,9 @@ class ItemViewModel: ObservableObject {
         }
     }
     
-    func addItem(name: String, isSold: Bool, condition: conditionEnum, price: Double, category: categoriesEnum, images: [String]) {
+    func addItem(name: String, isSold: Bool, condition: conditionEnum, price: Double, brand: String, category: categoriesEnum, images: [String]) {
         // Use the stored imageStrings
-        let newItem = ItemModel(name: name, isSold: isSold, condition: condition, price: price, category: category, images: images)
+        let newItem = ItemModel(name: name, isSold: isSold, condition: condition, price: price, brand: brand, category: category, images: images)
         
         DispatchQueue.global(qos: .background).async {
             DatabaseManager.shared.addItem(item: newItem)
